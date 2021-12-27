@@ -6,7 +6,7 @@
 4. Font awesome
 5. Javascript
 ## HTML_CSS_Assignment
-# Responsive Web-Application Design
+### Responsive Web-Application Design
 1. Navigation bar added
 2. Search field added into background image.
 3. Divided screen into different grid. 
