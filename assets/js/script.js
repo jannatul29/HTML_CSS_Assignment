@@ -93,32 +93,32 @@ minus.onclick = function(){
 }
 
 if(count == 0){
-    document.getElementById('dropdownBtn3').value = 'Guest';
+    document.getElementById('dropdownBtn2').value = 'Guest';
     document.getElementById('counter').innerHTML = count;
 }
 
 
 
-var dropdownBtn3 = document.getElementById('dropdownBtn3');
+var dropdownBtn2 = document.getElementById('dropdownBtn2');
 
-dropdownBtn3.onclick =function(){
-    var dropdownContent3 = document.getElementById('dropdownContent3');
-    dropdownContent3.style.display = "block";
+dropdownBtn2.onclick =function(){
+    var dropdownContent2 = document.getElementById('dropdownContent2');
+    dropdownContent2.style.display = "block";
     
 }
 
 var submit = document.getElementById('submit');
 
 submit.onclick = function(){
-    var dropdownContent3 = document.getElementById('dropdownContent3');
+    var dropdownContent2 = document.getElementById('dropdownContent2');
     if(count==0){
-      document.getElementById('dropdownBtn3').value = "Guest";
+      document.getElementById('dropdownBtn2').value = "Guest";
       document.getElementById('counter').innerHTML = count;
     }else{
-      document.getElementById('dropdownBtn3').value = count;
+      document.getElementById('dropdownBtn2').value = count;
       document.getElementById('counter').innerHTML = "0";
     }
-    dropdownContent3.style.display = "none";
+    dropdownContent2.style.display = "none";
 }
 
 // Guest end 
@@ -185,11 +185,11 @@ Range2.onchange = function(){
 
 
 
-var dropdownBtn4 = document.getElementById('dropdownBtn4');
+var dropdownBtn3 = document.getElementById('dropdownBtn3');
 
-dropdownBtn4.onclick =function(){
-    dropdownContent4 = document.getElementById('dropdownContent4');
-    dropdownContent4.style.display = "block";
+dropdownBtn3.onclick =function(){
+    dropdownContent3 = document.getElementById('dropdownContent3');
+    dropdownContent3.style.display = "block";
     
 }
 
@@ -197,18 +197,18 @@ dropdownBtn4.onclick =function(){
 var price = document.getElementById('price');
 
 price.onclick = function(){
-    dropdownContent4 = document.getElementById('dropdownContent4');
+    dropdownContent3 = document.getElementById('dropdownContent3');
     if(maxrange!=0){
-      document.getElementById('dropdownBtn4').value = "$"+minrange+"-"+"$"+maxrange;
+      document.getElementById('dropdownBtn3').value = "$"+minrange+"-"+"$"+maxrange;
       priceRange = document.getElementById('priceRange');
       priceRange.value = "Price Range: $"+"0"+"-"+"$"+"0";
       document.getElementById('Range1').value = "0";
       document.getElementById('Range2').value = "0";
     }
     else{
-      document.getElementById('dropdownBtn4').value = "Price range";
+      document.getElementById('dropdownBtn3').value = "Price range";
     }
-    dropdownContent4.style.display = "none";
+    dropdownContent3.style.display = "none";
 }
 
 
