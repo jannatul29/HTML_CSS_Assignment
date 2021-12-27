@@ -1,0 +1,101 @@
+
+
+<link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+<body>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6 m-auto">
+                <div class="form-group">
+                    <input type="text" id="search" class="form-control form-control-lg" placeholder="enter state"/>
+
+                </div>
+                <div id="match_list"></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+// const search = document.getElementById('search');
+// const matchList = document.getElementById('match-list');
+// //let states;
+
+// // Get states
+// const searchStates = async searchText => {
+//  const res = await fetch('https://www.vacationhomerentals.com/content/srp/saut?s=Las%20vegas');
+//  const states = await res.json();
+
+
+// // FIlter states
+// //let matches = searchText => {
+//  // Get matches to current text input
+//  let matches = states.filter(state => {
+//   const regex = new RegExp(`^${searchText}`, 'gi');
+//   return state.Name.match(regex);
+//  });
+//  console.log(matches);
+
+//  // Clear when input or matches are empty
+//  if (searchText.length === 0) {
+//   matches = [];
+//   matchList.innerHTML = 'no data';
+//  }
+
+//  outputHtml(matches);
+// };
+
+// // Show results in HTML
+// const outputHtml = matches => {
+//  if (matches.length > 2) {
+//   const html = matches.map(
+//     match => `<div class="card card-body mb-1">
+//     <h4>${match.name} (${match.abbr}) 
+//     <span class="text-primary">${match.capital}</span></h4>
+//     <small>Lat: ${match.lat} / Long: ${match.long}</small>
+//    </div>`
+//    )
+//    .join('');
+//   matchList.innerHTML = html;
+//  }
+// };
+
+// search.addEventListener('input', () => searchStates(search.value));
+
+fetch("https://www.vacationhomerentals.com/content/srp/saut?s=Las%20vegas", { 
+  "method": "GET",
+  "mode": "no-cors",
+}).then(function(response) {
+    
+    console.log(response)
+
+    if(response.body === null){
+        console.log("imu");
+        const myJSON = [{"id":503358,"Name":"Province of Ragusa, Sicily, Italy","Count":51,"SlashName":"italy\/sicily\/province-of-ragusa-vacation-rentals\/g100503358"},{"id":416298,"Name":"Jerusalem, Jerusalem District, Israel","Count":4,"SlashName":"Israel\/Jerusalem-vacation-rentals\/g2579\/"},{"id":407700,"Name":"Jerusalem District, Israel","Count":4,"SlashName":"israel\/jerusalem-district-vacation-rentals\/g100407700"},{"id":686343,"Name":"Marausa, Trapani, Italy","Count":2,"SlashName":"sicily\/province-of-trapani\/trapani\/marausa-vacation-rentals\/g100686343"},{"id":414003,"Name":"Husafell, West Region, Iceland","Count":2,"SlashName":"iceland\/west-region\/husafell-vacation-rentals\/g100414003"},{"id":414006,"Name":"Husavik, Northeast Region, Iceland","Count":2,"SlashName":"iceland\/northeast-region\/husavik-vacation-rentals\/g100414006"},{"id":574074,"Name":"Llanddeusant, Anglesey, United Kingdom","Count":1,"SlashName":"wales\/north-wales\/anglesey\/llanddeusant-vacation-rentals\/g100574074"}];
+
+        console.log(myJSON)
+
+        const search = document.getElementById('search');
+        const matchList = document.getElementById('match_list');
+        //var searchtext= search.value;
+       var searchtext= "Pro";
+
+        if(searchtext.length>=3){
+            for(var i=0; i<myJSON.length; i++) {
+                var objstring = myJSON[i].Name;
+                //console.log(objstring);
+               if(objstring.indexOf(searchtext) !== -1){
+                //if(objstring == searchtext){
+                   // `<div class="card card-body mb-1">
+                    //<h5>${objstring}</h5>
+                   // </div>`
+                   // matchList.innerHTML = objstring;
+                    console.log(objstring);
+                }   
+            }      
+        }
+    }
+ 
+});//}
+
+</script>

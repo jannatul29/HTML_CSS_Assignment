@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- CSS code-->
+  
+        <style>
+            /*apply css properties to body tag*/
+  
+          
+  
+            /*apply css properties to container class*/
+  
+    .range-slider {
+    width: 480px;
+ /* Match this to the SVG's x2 value */
+    margin: auto;
+    text-align: center;
+    position: relative;
+    height: 6em;
+}
+.range-slider svg,
+.range-slider input[type="range"] {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+input[type="number"] {
+    border: 1px solid #ddd;
+    text-align: center;
+    font-size: 1.6em;
+}
+input[type="number"]:invalid,
+input[type="number"]:out-of-range {
+    border: 2px solid #ff6347;
+}
+input[type="range"] {
+    -webkit-appearance: none;
+    width: 100%;
+}
+input[type="range"]:focus {
+    outline: none;
+}
+input[type="range"]:focus::-webkit-slider-runnable-track {
+    background: #2497e3;
+}
+input[type="range"]:focus::-ms-fill-lower {
+    background: #2497e3;
+}
+input[type="range"]:focus::-ms-fill-upper {
+    background: #2497e3;
+}
+input[type="range"]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 5px;
+    cursor: pointer;
+    
+    background: #2497e3;
+    border-radius: 1px;
+    box-shadow: none;
+    border: 0;
+}
+input[type="range"]::-webkit-slider-thumb {
+    z-index: 2;
+    position: relative;
+    box-shadow: 0px 0px 0px #000;
+    border: 1px solid #2497e3;
+    height: 18px;
+    width: 18px;
+    border-radius: 25px;
+    background: #a1d0ff;
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -7px;
+}
+input[type="range"]::-moz-range-track {
+    width: 100%;
+    height: 5px;
+    cursor: pointer;
+
+    background: #2497e3;
+    border-radius: 1px;
+    box-shadow: none;
+    border: 0;
+}
+input[type="range"]::-moz-range-thumb {
+    z-index: 2;
+    position: relative;
+    box-shadow: 0px 0px 0px #000;
+    border: 1px solid #2497e3;
+    height: 18px;
+    width: 18px;
+    border-radius: 25px;
+    background: #a1d0ff;
+    cursor: pointer;
+}
+input[type="range"]::-ms-track {
+    width: 100%;
+    height: 5px;
+    cursor: pointer;
+    
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+}
+input[type="range"]::-ms-fill-lower,
+input[type="range"]::-ms-fill-upper {
+    background: #2497e3;
+    border-radius: 1px;
+    box-shadow: none;
+    border: 0;
+}
+input[type="range"]::-ms-thumb {
+    z-index: 2;
+    position: relative;
+    box-shadow: 0px 0px 0px #000;
+    border: 1px solid #2497e3;
+    height: 18px;
+    width: 18px;
+    border-radius: 25px;
+    background: #a1d0ff;
+    cursor: pointer;
+}
+
+            /*apply css properties to h1 tag*/
+  
+           
+        </style>
+    </head>
+  
+    <body>
+        <div class="range-slider" style="width:350px">
+            <span>Price Range: <input type="text" value="" id="priceRange"></span>
+            <input value="25000" min="0" max="100000" step="500" type="range" id="customRange1">
+            <input value="50000" min="0" max="100000" step="500" type="range" id="customRange2">                   
+            <svg width="100%" height="24">
+                <line x1="4" y1="0" x2="50" y2="0" style="width:50px"></line>   
+            </svg>
+        </div>
+  
+
+        <!--</div>
+         JavaScript code-->
+        <script>
+        // Price Range Section start here
+
+var customRange1 = document.getElementById('customRange1');
+var minrange = Number(customRange1.value);
+
+
+
+var customRange2 = document.getElementById('customRange2');
+var maxrange = Number(customRange2.value);
+
+var temp;
+
+
+
+var priceRange = document.getElementById('priceRange');
+priceRange.value = "$"+minrange+"-"+"$"+maxrange;
+
+
+customRange1 = document.getElementById('customRange1');
+
+customRange1.onchange = function(){
+
+    customRange1 = document.getElementById('customRange1');
+    customRange2 = document.getElementById('customRange2');
+
+    minrange = Number(customRange1.value);
+    maxrange = Number(customRange2.value);
+
+    if(minrange>maxrange){
+      temp = minrange;
+      minrange = maxrange;
+      maxrange = temp;
+      
+      document.getElementById('customRange1').value = minrange;
+      document.getElementById('customRange2').value = maxrange;
+    }  
+    priceRange = document.getElementById('priceRange');
+    priceRange.value = "$"+minrange+"-"+"$"+maxrange;
+}
+
+
+customRange2 = document.getElementById('customRange2');
+
+customRange2.onchange = function(){
+
+    customRange1 = document.getElementById('customRange1');
+    customRange2 = document.getElementById('customRange2');
+    
+    minrange = Number(customRange1.value);
+    maxrange = Number(customRange2.value);
+    
+    if(minrange>maxrange){
+      temp = minrange;
+      minrange = maxrange;
+      maxrange = temp;
+      document.getElementById('customRange1').value = minrange;
+      document.getElementById('customRange2').value = maxrange;
+    }
+    
+    priceRange = document.getElementById('priceRange');
+    priceRange.value = "$"+minrange+"-"+"$"+maxrange;
+}
+
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- CSS code-->
+  
+        <style>
+            /*apply css properties to body tag*/
+  
+          
+  
+            /*apply css properties to container class*/
+  
+           .container {
+                justify-content: center;
+                align-items: center;
+                display: flex;
+                height: 100%;
+                text-align: center;
+            }
+  
+            /*apply css properties to button tag*/
+  
+            .butn {
+                width: 30px;
+                height: 30px;
+                font-size: 20px;
+                background-color: rgb(255, 255, 255);
+                color: rgb(0, 0, 0);
+                border-radius: 50%;
+            }
+  
+            /*apply hover effect to button tag*/
+  
+            button:hover {
+                background-color: greenyellow;
+                color: grey;
+            }
+  
+            /*apply css properties to h2 tag*/
+  
+            h2 {
+                color: black;
+                margin: 0 50px;
+                font-size: 20px;
+            }
+            /*apply css properties to h1 tag*/
+  
+           
+        </style>
+    </head>
+  
+    <body>
+  
+        
+            <!-- adding button and heading to show the digits -->
+            <!-- increment() and decrement() functions on button click-->
+            <card style="background-color:rgb(158, 149, 149); height:150px; width:200px ">
+                <div class="container">
+               <!-- <div class="container">-->
+                <div class="row height d-flex justify-content-center align-items-center">
+                    <div class="col-md-3" style="padding: 0px 2px 0px 0px;">
+                        <h2>Guest</h2>
+                    </div>
+                    <div class="col-md-3" style="padding: 0px 2px 0px 0px;">
+                        <button class="butn" onclick="increment()" style="border-color: coral;">+</button>
+                    </div>
+                    <div class="col-md-3" style="padding: 0px 2px 0px 0px;">
+                        <h2 id="counting"></h2>
+                    </div>
+                    <div class="col-md-3" style="padding: 0px 2px 0px 0px;">
+                        <button class="butn" onclick="decrement()" style="border-color: coral;">-</button>
+                    </div>
+                </div>
+                <div class="row height d-flex justify-content-center align-items-center">
+                    <div class="col-md-3" style="padding: 0px 2px 0px 0px;">
+                    </div>
+                    <div class="col-md-3" style="padding: 0px 2px 0px 0px;">
+                    </div>
+                    <div class="col-md-3" style="padding: 0px 2px 0px 0px;">
+                    </div>
+                    <div class="col-md-3" style="padding: 0px 2px 0px 0px;">
+                        <button type="button" class="btn btn-primary" style="background-color: rgb(230, 154, 14);color: rgb(255, 255, 255);">Apply</button>
+                    </div>
+                </div>
+            
+               </div>   
+                <!-- <button onclick="increment()">+</button>
+                <h2 id="counting"></h2>
+                <button onclick="decrement()">-</button>-->
+            </card>
+        <!--</div>
+         JavaScript code-->
+        <script>
+            //initialising a variable name data
+            var data = 0;
+  
+            //printing default value of data that is 0 in h2 tag
+            document.getElementById("counting").innerText = data;
+  
+            //creation of increment function
+            function increment() {
+                data = data + 1;
+                //document.getElementById("counting").innerText = data;
+                if(data>0){
+                document.getElementById("counting").innerText = data;
+                }
+                else if(data<0){
+                    data=0;
+                    document.getElementById("counting").innerText = "0";
+
+                }
+            }
+            //creation of decrement function
+            function decrement() {
+                data = data - 1;
+                if(data>0){
+                document.getElementById("counting").innerText = data;
+                }
+                else if(data<0){
+                    data=0;
+                    document.getElementById("counting").innerText = "0";
+
+                }
+            }
+        </script>
+    </body>
+</html>
