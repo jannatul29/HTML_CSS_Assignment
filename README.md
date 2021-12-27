@@ -5,7 +5,7 @@
 3. Bootstrap
 4. Font awesome
 5. Javascript
-## HTML_CSS_Assignment
+## HTML CSS Assignment
 ### Responsive Web-Application Design
 1. Navigation bar added
 2. Search field added into background image.
@@ -13,7 +13,7 @@
 5. Added card and different incons.
 6. Lastly footer added.
 
-## javascript_Assignment
+## Javascript Assignment
 1. Display autocompletes in search bar
 2. checkin and checkout date using hotel date picker
 3. Guest count using increasing and decreasing button
