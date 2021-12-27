@@ -1,39 +1,78 @@
-// Place search section start here
+// search start
 
-/*var place;
-var cnt = 0;
-var inputField = document.getElementById("searchInput");
-
-inputField.onkeyup = function(){
-  var word = document.getElementById("searchInput").value;
-  cnt = word.length;
-  if(cnt >= 2){
-    var autocomplete;
-    autocomplete = new google.maps.places.Autocomplete((document.getElementById('searchInput')),{
-        types: ['geocode'],
-    });
-
-    google.maps.event.addListener(autocomplete,"place_changed",function(){
-        place = autocomplete.getPlace();
-        console.log(place.formatted_address);
-    });
-  }
-}*/
+const searchin = document.getElementById('searchin');
+const matchList = document.getElementById('match-list');
 
 
-// place search section end here
+const searchStates = async searchText => {
+    fetch("https://www.vacationhomerentals.com/content/srp/saut?s=Las%20vegas", { 
+  "method": "GET",
+  "mode": "no-cors",
+}).then(function(response) {
+    
+    console.log(response)
+
+    if(response.body === null){
+        console.log("imu");
+        const states = [{"id":503358,"Name":"Province of Ragusa, Sicily, Italy","Count":51,"SlashName":"italy\/sicily\/province-of-ragusa-vacation-rentals\/g100503358"},{"id":416298,"Name":"Jerusalem, Jerusalem District, Israel","Count":4,"SlashName":"Israel\/Jerusalem-vacation-rentals\/g2579\/"},{"id":407700,"Name":"Jerusalem District, Israel","Count":4,"SlashName":"israel\/jerusalem-district-vacation-rentals\/g100407700"},{"id":686343,"Name":"Marausa, Trapani, Italy","Count":2,"SlashName":"sicily\/province-of-trapani\/trapani\/marausa-vacation-rentals\/g100686343"},{"id":414003,"Name":"Husafell, West Region, Iceland","Count":2,"SlashName":"iceland\/west-region\/husafell-vacation-rentals\/g100414003"},{"id":414006,"Name":"Husavik, Northeast Region, Iceland","Count":2,"SlashName":"iceland\/northeast-region\/husavik-vacation-rentals\/g100414006"},{"id":574074,"Name":"Llanddeusant, Anglesey, United Kingdom","Count":1,"SlashName":"wales\/north-wales\/anglesey\/llanddeusant-vacation-rentals\/g100574074"}];
+
+// FIlter states
+//let matches = searchText => {
+ // Get matches to current text input
+ let matches = states.filter(state => {
+  const regex = new RegExp(`^${searchText}`, 'gi');
+  return state.Name.match(regex);
+ });
+ console.log(matches);
+
+ // Clear when input or matches are empty
+ if (searchText.length === 0) {
+  matches = [];
+  matchList.innerHTML = '';
+ }
+
+ outputHtml(matches);
+}
+
+});
+};
+
+// Show results in HTML
+const outputHtml = matches => {
+ if (matches.length >0) {
+  const html = matches.map(
+    match => `<div class="card card-body mb-1">
+    <li style="color: black">${match.Name}</li>
+   </div>`
+   )
+   .join('');
+  matchList.innerHTML = html;
+  matchList.onclick = function (event) {
+  const setValue = event.target.innerText;
+  searchin.value = setValue;
+  this.innerHTML = "";
+};
+  
+ }
+};
+
+searchin.addEventListener('input', () => searchStates(searchin.value));
+  
+  
+
+// search end 
 
 
-// Calander section start here
+// Calander start
 
 var hdpkr = new HotelDatepicker(document.getElementById("input-id"));
 
 
-//Calander section end here
+//Calander end 
 
 
 
-// Guest Section start here
+// Guest start 
 
 var count = 0;
 var plus = document.getElementById('plus');
@@ -82,16 +121,16 @@ submit.onclick = function(){
     dropdownContent3.style.display = "none";
 }
 
-// Guest Section end here
+// Guest end 
 
 
-// Price Range Section start here
+// Price Range start
 
-var customRange1 = document.getElementById('customRange1');
-var minrange = Number(customRange1.value);
+var Range1 = document.getElementById('Range1');
+var minrange = Number(Range1.value);
 
-var customRange2 = document.getElementById('customRange2');
-var maxrange = Number(customRange2.value);
+var Range2 = document.getElementById('Range2');
+var maxrange = Number(Range2.value);
 
 var temp;
 
@@ -100,44 +139,44 @@ var priceRange = document.getElementById('priceRange');
 priceRange.value = "Price range: $"+minrange+"-"+"$"+maxrange;
 
 
-customRange1 = document.getElementById('customRange1');
+Range1 = document.getElementById('Range1');
 
-customRange1.onchange = function(){
+Range1.onchange = function(){
 
-    customRange1 = document.getElementById('customRange1');
-    customRange2 = document.getElementById('customRange2');
+    Range1 = document.getElementById('Range1');
+    Range2 = document.getElementById('Range2');
 
-    minrange = Number(customRange1.value);
-    maxrange = Number(customRange2.value);
+    minrange = Number(Range1.value);
+    maxrange = Number(Range2.value);
 
     if(minrange>maxrange){
       temp = minrange;
       minrange = maxrange;
       maxrange = temp;
-      document.getElementById('customRange1').value = minrange;
-      document.getElementById('customRange2').value = maxrange;
+      document.getElementById('Range1').value = minrange;
+      document.getElementById('Range2').value = maxrange;
     }
     priceRange = document.getElementById('priceRange');
     priceRange.value = "Price range: $"+minrange+"-"+"$"+maxrange;
 }
 
 
-customRange2 = document.getElementById('customRange2');
+Range2 = document.getElementById('Range2');
 
-customRange2.onchange = function(){
+Range2.onchange = function(){
 
-    customRange1 = document.getElementById('customRange1');
-    customRange2 = document.getElementById('customRange2');
+    Range1 = document.getElementById('Range1');
+    Range2 = document.getElementById('Range2');
     
-    minrange = Number(customRange1.value);
-    maxrange = Number(customRange2.value);
+    minrange = Number(Range1.value);
+    maxrange = Number(Range2.value);
     
     if(minrange>maxrange){
       temp = minrange;
       minrange = maxrange;
       maxrange = temp;
-      document.getElementById('customRange1').value = minrange;
-      document.getElementById('customRange2').value = maxrange;
+      document.getElementById('Range1').value = minrange;
+      document.getElementById('Range2').value = maxrange;
     }
 
     priceRange = document.getElementById('priceRange');
@@ -163,8 +202,8 @@ price.onclick = function(){
       document.getElementById('dropdownBtn4').value = "$"+minrange+"-"+"$"+maxrange;
       priceRange = document.getElementById('priceRange');
       priceRange.value = "Price Range: $"+"0"+"-"+"$"+"0";
-      document.getElementById('customRange1').value = "0";
-      document.getElementById('customRange2').value = "0";
+      document.getElementById('Range1').value = "0";
+      document.getElementById('Range2').value = "0";
     }
     else{
       document.getElementById('dropdownBtn4').value = "Price range";
@@ -173,14 +212,15 @@ price.onclick = function(){
 }
 
 
-// Price Range section end here
+// Price Range end 
 
 
 //search button sart
 var search = document.getElementById('search');
 search.onclick = function(){
-    //var location = document.getElementById('location');
-    //location.innerHTML ="Search : " + place.formatted_address;
+    var place= searchin.value;
+    var location = document.getElementById('place');
+    location.innerHTML ="Search : " + place;
     
     var checkIn_checkOut = document.getElementById('checkIn_checkOut');
 
@@ -195,6 +235,3 @@ search.onclick = function(){
     Price_range.innerHTML = "Price range : $"+minrange+" - $"+maxrange;
 }
 //search button end
-
-
-
