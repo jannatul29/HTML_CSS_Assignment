@@ -221,12 +221,15 @@ search.onclick = function(){
     var place= searchin.value;
     var location = document.getElementById('place');
     location.innerHTML ="Search : " + place;
-    
-    var checkIn_checkOut = document.getElementById('checkIn_checkOut');
 
     var date = hdpkr.getValue();
+    var myArray = date.split(" ");
+    
+    var checkIn = document.getElementById('checkIn');
+    checkIn.innerHTML = "CheckIn: "+myArray[0];
 
-    checkIn_checkOut.innerHTML = "CheckIn & CheckOut: "+date;
+    var checkOut = document.getElementById('checkOut');
+    checkOut.innerHTML = "CheckOut: "+myArray[2];
     
     var Guest = document.getElementById("Guest");
     Guest.innerHTML ="Guests : " + count;
